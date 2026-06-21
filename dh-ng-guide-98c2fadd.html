@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常查询的起点：ng导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", system-ui, sans-serif;
+      line-height: 1.7;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.25rem;
+    }
+    .page {
+      max-width: 700px;
+      width: 100%;
+    }
+    /* 柔和分隔 */
+    .spacer {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, #d4d9e0 20%, #d4d9e0 80%, transparent 100%);
+      margin: 2.5rem 0;
+      opacity: 0.5;
+    }
+    /* 标题层级 */
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.75rem;
+      color: #0b1d2f;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin: 2rem 0 1rem 0;
+      color: #1e3a5f;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.5rem 0;
+      color: #334155;
+    }
+    p {
+      margin-bottom: 1.25rem;
+    }
+    a {
+      color: #1e4a6b;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #94a3b8;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    a:hover {
+      color: #0b2a44;
+      text-decoration-color: #1e4a6b;
+    }
+    /* 开场区 (hero) */
+    .intro {
+      margin-bottom: 1.8rem;
+    }
+    .intro .sub {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-top: -0.2rem;
+    }
+    /* 特点列表 – 温和卡片式 */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0.8rem 0;
+    }
+    .feature-list li {
+      background: #ffffff;
+      border-left: 3px solid #cbd5e1;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.9rem;
+      border-radius: 0 6px 6px 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .feature-list li:hover {
+      border-left-color: #547a9b;
+      box-shadow: 0 2px 8px rgba(30,74,107,0.06);
+    }
+    .feature-list li strong {
+      display: inline-block;
+      margin-bottom: 0.1rem;
+      font-weight: 500;
+      color: #1e3a5f;
+    }
+    .feature-list li span {
+      display: block;
+      color: #475569;
+      font-size: 0.95rem;
+    }
+    /* 引用 / 温和结尾 */
+    .closing-note {
+      background: #f1f5f9;
+      padding: 1.5rem 1.75rem;
+      border-radius: 10px;
+      margin: 2rem 0 0.4rem 0;
+      font-size: 0.98rem;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+    }
+    .closing-note p:last-child {
+      margin-bottom: 0;
+    }
+    /* 细节 */
+    .meta-note {
+      font-size: 0.9rem;
+      color: #62748c;
+      margin-top: 2rem;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+    /* 响应式 */
+    @media (max-width: 520px) {
+      body {
+        padding: 2rem 1rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .feature-list li {
+        padding: 0.85rem 1rem;
+      }
+      .closing-note {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 开场短句 -->
+  <div class="intro">
+    <h1>日常查询，一本横向的线索簿</h1>
+    <p class="sub">对照、延伸、再确认——信息之间需要一座安静的桥。</p>
+  </div>
+
+  <p>无论是核对术语、比较不同来源的表述，还是在一段阅读后想迅速找到相关背景，我们常常需要在多个站点之间来回跳转。这种跳转如果缺少秩序，就容易打散注意力。一个经得起重复使用的导航集合，能够将零散的需求收拢为稳定的路径。正是出于这种朴素的考虑，<a href="https://dh-ng.com">ng导航</a>被构建起来：它不试图替代搜索引擎，而是提供一种经过筛选的起点，让日常的查询与对照变得轻巧一些。</p>
+
+  <!-- 承接段落 -->
+  <p>使用导航页的习惯，往往来自具体的场景。比如在阅读一份技术文档时遇到陌生的库，又或者需要同时查阅两个不同领域的规范定义——这种时候，如果浏览器标签页里已经有一组可靠的工具入口，就能省下不少重新检索的精力。导航的价值不在于多，而在于每一个链接都对应一个真实、高频的查询方向。从这一点上看，<a href="https://dh-ng.com">ng导航</a>更像一份静态的阅读清单：它呈现的不是全部，而是那些值得反复回访的角落。</p>
+
+  <h2>围绕“对照与延伸”组织</h2>
+  <p>信息检索中，对照和延伸是两种常见但又容易被忽略的需求。对照意味着并排查看两个相关对象，延伸则意味着从当前条目走向更外围的上下文。一个好的导航页应当同时支持这两种动作：既能在同一分类下快速切换站点，又能在不同分类之间发现潜在关联。以下特性正是从这些日常动作里生长出来的——</p>
+
+  <!-- 特点列表 -->
+  <ul class="feature-list">
+    <li>
+      <strong>分类有边界，不堆砌</strong>
+      <span>每个类别下的链接保持克制，只收录那些经过长期使用、内容质量稳定的站点，避免列表沦为单纯的数量展示。</span>
+    </li>
+    <li>
+      <strong>减少无关干扰</strong>
+      <span>页面不设置弹窗、自动播放或动态推荐，所有交互都基于纯粹的点击选择，让注意力始终停留在查询内容本身。</span>
+    </li>
+    <li>
+      <strong>视觉重量平衡</strong>
+      <span>每一项入口的文字长度和描述风格保持统一，减少因格式差异带来的阅读停顿，适合快速扫描与定位。</span>
+    </li>
+    <li>
+      <strong>适合长会话浏览</strong>
+      <span>无论是一次完整的调研，还是零散的知识补充，导航的结构都支持随时加入或离开，不强制线性流程。</span>
+    </li>
+  </ul>
+
+  <!-- 第三段落：场景与提示 -->
+  <h2>两个常见的用法示意</h2>
+  <h3>场景一：术语对照</h3>
+  <p>在阅读某篇英文技术文章时遇到“idempotent”一词，想要快速比对它在不同文档中的定义。此时打开<a href="https://dh-ng.com">ng导航</a>中的相关分类，可以同时调出技术词典、标准文档与社区解读，几组来源平行展开，定义之间的细微差异便一目了然。</p>
+  <h3>场景二：知识延伸</h3>
+  <p>看完一篇关于数据库索引原理的笔记后，想了解B+树的实际实现以及常见存储引擎的对比。导航页中与数据库相关的几个链接恰好覆盖了概念说明、性能测试与开源项目仓库——从一个点平滑地过渡到多个实践层。</p>
+
+  <!-- 温和结尾 -->
+  <div class="closing-note">
+    <p>导航页本身不生产知识，但它可以成为一条安静的道路，让查询者更快地抵达那些有深度的内容。每一次使用，都是对信息秩序的一次微小确认。如果你也习惯在阅读和工作中保留自己的工具集合，或许<a href="https://dh-ng.com">ng导航</a>能成为你日常路径中的一个稳定锚点。</p>
+    <p style="margin-top: 0.5rem; color: #556b82;">—— 保持简洁，保持开放。</p>
+  </div>
+
+  <div class="meta-note">
+    <span>页面内容仅供示意，所有引用均指向公开信息源。 此处为独立介绍页，与主站彼此独立。</span>
+  </div>
+
+</div>
+</body>
+</html>
