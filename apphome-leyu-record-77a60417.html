@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐鱼 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f2f4f6;
+            color: #2c3e4f;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        /* 容器 */
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 28px 0 60px;
+        }
+
+        /* 顶部导航 – 极简、留白 */
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 12px 0 10px;
+            border-bottom: 1px solid #e2e6ea;
+            margin-bottom: 48px;
+        }
+
+        .top-nav a {
+            text-decoration: none;
+            color: #3b5e7a;
+            font-size: 0.95rem;
+            margin-left: 28px;
+            transition: color 0.2s;
+            font-weight: 450;
+            letter-spacing: 0.01em;
+        }
+
+        .top-nav a:hover {
+            color: #1e3b4f;
+            text-decoration: underline 1.5px solid #b7c9d6;
+            text-underline-offset: 4px;
+        }
+
+        .top-nav .brand {
+            margin-right: auto;
+            margin-left: 0;
+            font-weight: 500;
+            color: #1f3b4c;
+            letter-spacing: 0.03em;
+            font-size: 1.05rem;
+            opacity: 0.8;
+        }
+
+        /* hero 区域 – 温和介绍 */
+        .hero {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+            padding: 44px 40px 40px;
+            margin-bottom: 40px;
+            border: 1px solid #e9edf0;
+            transition: box-shadow 0.15s;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 520;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: #1d2f3d;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            color: #3d5466;
+            margin-bottom: 22px;
+        }
+
+        .hero .mention {
+            display: inline-block;
+            background: #f0f3f7;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            color: #2e4b5e;
+            border: 1px solid #dde4e9;
+            margin-top: 6px;
+        }
+
+        /* 三个场景卡片模块 */
+        .scenes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .scene-card {
+            flex: 1 1 280px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px 26px 28px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e6ebef;
+            transition: transform 0.1s ease, box-shadow 0.25s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.02);
+            border-color: #d3dce3;
+            transform: translateY(-2px);
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 14px;
+            color: #1d3445;
+            letter-spacing: -0.01em;
+            border-left: 3px solid #9bb7cc;
+            padding-left: 12px;
+        }
+
+        .scene-card p {
+            color: #456073;
+            font-size: 0.98rem;
+            margin-bottom: 16px;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #f2f6fa;
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 0.78rem;
+            color: #3b5f79;
+            border: 1px solid #dce5eb;
+        }
+
+        /* 常见说明 / FAQ 区块 */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 36px 38px 30px;
+            border: 1px solid #e7ecef;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+            margin-bottom: 40px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 480;
+            color: #1f374a;
+            letter-spacing: -0.01em;
+            margin-bottom: 26px;
+            border-bottom: 1px solid #eaf0f4;
+            padding-bottom: 12px;
+        }
+
+        .faq-item {
+            padding: 14px 0 12px;
+            border-bottom: 1px solid #eff3f7;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 500;
+            color: #1f3b4e;
+            margin-bottom: 6px;
+            font-size: 1.04rem;
+        }
+
+        .faq-answer {
+            font-size: 0.95rem;
+            color: #466072;
+            padding-left: 8px;
+        }
+
+        .faq-answer a {
+            color: #2c5f7a;
+            text-decoration: underline 1px solid #b9cedc;
+            text-underline-offset: 3px;
+            transition: color 0.15s;
+        }
+
+        .faq-answer a:hover {
+            color: #183647;
+        }
+
+        /* 一个温柔的再次访问提示块 */
+        .visit-note {
+            background: #f7fafc;
+            border-radius: 18px;
+            padding: 28px 30px;
+            border: 1px solid #dde6ed;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+            text-align: center;
+            margin-top: 16px;
+            margin-bottom: 40px;
+        }
+
+        .visit-note p {
+            font-size: 1.04rem;
+            color: #2e4e63;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .visit-note .bookmark-hint {
+            background: #e8edf3;
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #31566d;
+            border: 1px solid #d0dbe4;
+            margin-top: 14px;
+        }
+
+        /* footer */
+        .footer {
+            border-top: 1px solid #dee5ea;
+            padding-top: 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #607a8c;
+        }
+
+        .footer small {
+            opacity: 0.7;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 0 14px;
+            }
+
+            .hero {
+                padding: 32px 22px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .scenes {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .scene-card {
+                flex: 1 1 auto;
+                padding: 24px 20px;
+            }
+
+            .faq-section {
+                padding: 28px 20px;
+            }
+
+            .top-nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .top-nav .brand {
+                margin-right: auto;
+                width: 100%;
+                margin-bottom: 6px;
+            }
+
+            .top-nav a {
+                margin-left: 18px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .visit-note {
+                padding: 20px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航，不含“进入/点击”等词 -->
+    <div class="top-nav">
+        <span class="brand">· 索引</span>
+        <a href="#scenes">场景</a>
+        <a href="#faq">说明</a>
+        <a href="#note">收藏</a>
+    </div>
+
+    <!-- hero – 再次访问与持续关注的角度 -->
+    <div class="hero">
+        <h1>再次回来，就像初次</h1>
+        <p>
+            有些地方，总是值得你放在顺手的位置。<br>
+            之后每一次打开，都像老朋友见面，不必刻意想起，却在需要时恰好出现。
+        </p>
+        <p>
+            <a href="https://apphome-leyu.com" style="color: #2b5b77; text-decoration: underline 1.5px #b6cedd; text-underline-offset: 4px; font-weight: 450;">乐鱼</a> 
+            就是这样一个安静的角落——不打扰，但一直都在。
+        </p>
+        <span class="mention">· 可收藏 · 可回访 · 常更新</span>
+    </div>
+
+    <!-- 三个场景模块 – 轻量导航式，从持续关注角度 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>日常翻阅</h3>
+            <p>
+                没有冗余的推送，只在你想起来时，去看看有什么新内容。像整理书架一样自然。
+            </p>
+            <span class="tag">适合随手打开</span>
+        </div>
+        <div class="scene-card">
+            <h3>重新发现</h3>
+            <p>
+                隔一段时间再访，常常会注意到上次忽略的细节。页面没变，但你的关注点已经不同。
+            </p>
+            <span class="tag">视角常新</span>
+        </div>
+        <div class="scene-card">
+            <h3>保持熟悉感</h3>
+            <p>
+                收藏夹里总要留几个让人安心的链接。不必频繁光顾，但知道它就在那里，随时可回。
+            </p>
+            <span class="tag">安静陪伴</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 – 温和、克制 -->
+    <div class="faq-section" id="faq">
+        <h2>一些你可能想了解的</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">为什么选择收藏这个链接？</div>
+            <div class="faq-answer">
+                因为有些页面值得你持续留意。<a href="https://apphome-leyu.com">乐鱼</a> 的内容会在合适的时候带来新的思绪，适合放在常用书签里。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">我隔了很久才回来，内容还一样吗？</div>
+            <div class="faq-answer">
+                整体方向保持连贯，但细节会随着时间有自然的调整。再次访问时，你可能会感受到细微的变化，就像久违的老地方有了新的布置。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">如何确保不会忘记这个地址？</div>
+            <div class="faq-answer">
+                建议添加到浏览器书签，或者直接记在常用的笔记里。不需要刻意记住，只要你知道自己有一个可以回访的地方就够了。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">这里会频繁变动吗？</div>
+            <div class="faq-answer">
+                保持适度的更新节奏，不会让人应接不暇。适合那些喜欢安静浏览、不希望被打扰的用户。
+            </div>
+        </div>
+    </div>
+
+    <!-- 再次访问 & 收藏提示 -->
+    <div class="visit-note" id="note">
+        <p>
+            如果你已经来过，不妨把它留在收藏夹里。<br>
+            下次再想起时，可以直接从收藏里打开，就像翻开一本常读的书。
+        </p>
+        <span class="bookmark-hint">⌘+D 或 Ctrl+D 可收藏此页</span>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <small>— 简单、安静，值得再次回访 —</small>
+        <br>
+        <span style="display: inline-block; margin-top: 10px; opacity: 0.5; font-size: 0.8rem;">&nbsp;</span>
+    </div>
+
+</div>
+</body>
+</html>
