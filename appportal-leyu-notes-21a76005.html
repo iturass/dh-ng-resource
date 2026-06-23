@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>乐鱼 · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9fbfd;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e2a3a;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* hero 区域 — 克制、清晰 */
+    .hero {
+      margin-top: 2.8rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: -0.025em;
+      color: #0b1c2e;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      border-left: 4px solid #2b7a62;
+      padding-left: 1.2rem;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      color: #4a5b6e;
+      max-width: 600px;
+      margin-top: 0.5rem;
+      padding-left: 1.6rem;
+    }
+
+    /* 摘要卡片 — 窄正文宽度 */
+    .summary-block {
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 24px;
+      box-shadow: 0 6px 20px rgba(0, 20, 30, 0.04);
+      margin-bottom: 2.8rem;
+      border: 1px solid #e8edf2;
+    }
+
+    .summary-block p {
+      font-size: 1rem;
+      color: #213244;
+      margin-bottom: 1.2rem;
+    }
+
+    .summary-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .inline-link {
+      color: #1a6b58;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #bdd9cf;
+      transition: border-color 0.2s;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #1a6b58;
+    }
+
+    /* 亮点网格 — 两列卡片 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0 2.8rem 0;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 1.8rem 1.6rem;
+      border-radius: 20px;
+      border: 1px solid #e3eaf0;
+      transition: box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: 0 8px 24px rgba(27, 55, 70, 0.06);
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b1c2e;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: #3a4d60;
+      line-height: 1.6;
+    }
+
+    /* 使用建议 / 场景段落 */
+    .usage-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2.5rem;
+      margin: 2.2rem 0 2rem 0;
+      border: 1px solid #e8edf2;
+    }
+
+    .usage-section h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      color: #0b1c2e;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .usage-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .usage-section li {
+      position: relative;
+      padding-left: 1.6rem;
+      margin-bottom: 1rem;
+      font-size: 0.98rem;
+      color: #1f3345;
+    }
+
+    .usage-section li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #2b7a62;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* FAQ 摘要 — 极简风格 */
+    .faq-mini {
+      margin: 2.5rem 0 1.8rem 0;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.3rem;
+      font-weight: 550;
+      color: #0b1c2e;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #dee6ed;
+      padding: 1rem 0;
+    }
+
+    .faq-item:first-of-type {
+      border-top: 1px solid #dee6ed;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      font-size: 0.98rem;
+      color: #142b3b;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-answer {
+      font-size: 0.9rem;
+      color: #3d546a;
+      line-height: 1.6;
+      margin-top: 0.2rem;
+    }
+
+    /* 可信说明 / 尾部 */
+    .note-section {
+      background: #f2f6fa;
+      padding: 1.5rem 2.2rem;
+      border-radius: 20px;
+      margin: 2.5rem 0 2rem 0;
+      font-size: 0.88rem;
+      color: #2b4055;
+      border: 1px solid #dce4ec;
+    }
+
+    .note-section strong {
+      color: #0b1c2e;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        padding-left: 1rem;
+      }
+
+      .hero .sub {
+        padding-left: 1.2rem;
+        font-size: 0.95rem;
+      }
+
+      .summary-block,
+      .usage-section,
+      .note-section {
+        padding: 1.6rem 1.2rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .feature-card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .faq-mini {
+        margin-top: 1.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>乐鱼 · 产品摘要</h1>
+      <div class="sub">面向信息服务的轻量化入口，整合资源与工具访问路径。</div>
+    </div>
+
+    <!-- 摘要 + 链接自然嵌入 -->
+    <div class="summary-block">
+      <p>
+        <strong>乐鱼</strong> 定位为聚合型应用门户，将分散的在线功能、服务节点集中至统一界面。
+        用户无需在多个平台之间反复切换，通过单一入口即可触达核心模块。
+        当前版本注重信息架构的清晰度与响应效率，适用于个人及团队日常操作场景。
+      </p>
+      <p>
+        平台持续迭代基础功能与交互逻辑，若希望了解具体服务范围，
+        可前往 <a href="https://appportal-leyu.com" class="inline-link">乐鱼</a> 参阅最新说明。
+        页面内容以实际运行版本为准。
+      </p>
+    </div>
+
+    <!-- 亮点卡片 -->
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>模块化导航</h3>
+        <p>按工具类型、使用频率组织入口，减少查找路径，提升定位效率。</p>
+      </div>
+      <div class="feature-card">
+        <h3>轻量界面</h3>
+        <p>去除冗余装饰，聚焦信息本身，适配不同设备屏幕尺寸。</p>
+      </div>
+      <div class="feature-card">
+        <h3>统一入口</h3>
+        <p>将常用服务、数据看板及辅助功能聚合至同一面板，降低切换成本。</p>
+      </div>
+      <div class="feature-card">
+        <h3>渐进更新</h3>
+        <p>根据使用反馈调整功能优先级，不堆砌特性，保持可维护性。</p>
+      </div>
+    </div>
+
+    <!-- 使用建议 / 场景 -->
+    <div class="usage-section">
+      <h2>适用场景参考</h2>
+      <ul>
+        <li>需要定期访问多个内部工具或数据页面的用户，可将乐鱼设为首选启动页。</li>
+        <li>团队协作时，通过统一入口分发常用链接，减少沟通中的信息损耗。</li>
+        <li>个人工作流整理：将待办、资料查询、状态监控等集中管理。</li>
+        <li>快速评估新工具或服务时，利用门户分类结构进行横向对比。</li>
+      </ul>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+      <h2>常见问题 · 摘要</h2>
+      <div class="faq-item">
+        <div class="faq-question">乐鱼是否需要注册？</div>
+        <div class="faq-answer">部分基础模块可直接使用；进阶功能依具体服务要求而定，请以页面实际指引为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">移动端适配情况如何？</div>
+        <div class="faq-answer">界面已针对常见手机屏幕进行响应式调整，推荐使用现代浏览器以获得稳定布局。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">内容更新频率？</div>
+        <div class="faq-answer">门户内工具列表及说明会随版本迭代更新，建议定期访问以获取最新信息。</div>
+      </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="note-section">
+      <strong>说明：</strong>
+      本页面为产品介绍摘要，不构成任何服务承诺或功能担保。
+      <a href="https://appportal-leyu.com" class="inline-link">乐鱼</a> 的具体服务内容、可用状态及使用条款，
+      均以实际部署版本及官方文档为准。建议用户在充分了解信息后自主决定使用方式。
+    </div>
+
+    <!-- 留白底部 -->
+    <div style="height: 1.5rem;"></div>
+  </div>
+</body>
+</html>
